@@ -3,10 +3,11 @@ const bodyParser = require('body-parser');
 const cors = require('cors');
 
 const app = express();
-const port = 3000;
+const port = process.env.PORT || 3000; // Use the provided port from Heroku or default to 3000
+
 
 // Use the cors middleware
-//app.use(cors());
+app.use(cors());
 
 // Parse JSON request bodies
 app.use(bodyParser.json());
