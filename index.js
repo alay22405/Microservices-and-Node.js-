@@ -1,8 +1,12 @@
 const express = require('express');
 const bodyParser = require('body-parser');
+const cors = require('cors');
 
 const app = express();
 const port = 3000;
+
+// Use the cors middleware
+//app.use(cors());
 
 // Parse JSON request bodies
 app.use(bodyParser.json());
@@ -35,13 +39,42 @@ app.post('/caloriesburned', (req, res) => {
   res.json({ caloriesBurned });
 });
 
+// Function to calculate BMI
+function calculateBMI(height, weight) {
+  const bmi = weight / (height * height);
+  return bmi;
+}
+
+// Function to calculate Body Fat
+function calculateBodyFat(gender, weight, height, age, waist, hip, neck) {
+  // Implement the body fat calculation logic here
+  // For now, let's assume the calculation is done correctly and return a dummy value
+  const bodyFatPercentage = 25.0;
+  return bodyFatPercentage;
+}
+
+// Function to calculate Ideal Weight
+function calculateIdealWeight(gender, height) {
+  // Implement the ideal weight calculation logic here
+  // For now, let's assume the calculation is done correctly and return a dummy value
+  const idealWeight = 70.0;
+  return idealWeight;
+}
+
+// Function to calculate Calories Burned
+function calculateCaloriesBurned(activity, weight, duration) {
+  // Implement the calories burned calculation logic here
+  // For now, let's assume the calculation is done correctly and return a dummy value
+  const caloriesBurned = 500.0;
+  return caloriesBurned;
+}
+
+// Serve the index.html file when accessing the root URL
+app.get('/', (req, res) => {
+  res.sendFile(__dirname + '/index.html');
+});
+
 // Start the server
 app.listen(port, () => {
   console.log(`Server is running on port ${port}`);
-});
-
-// Route handler for the root URL
-app.get('/', (req, res) => {
-  // Redirect the user to the BMI calculator page
-  res.redirect('/bmi');
 });
