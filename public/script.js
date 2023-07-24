@@ -11,7 +11,7 @@ function calculateBMI(event) {
   const weight = parseFloat(document.getElementById('weight').value);
 
   // Make API request to calculate BMI
-  fetch('https://my-health-calculator-app-ac95d0d8f288.herokuapp.com/bmi', {
+  fetch('http://localhost:3000/bmi', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json'
